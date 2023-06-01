@@ -1,10 +1,9 @@
-# Use ArchLinux as a base (always up-to-date)
-FROM archlinux:latest
+# use debian as base image
+FROM ubuntu:latest
 
-# Install `TexLive-Most` package.
-# Note: Contains _most_ of the required LaTeX pacakges.
-RUN pacman -Syu --noconfirm \
-    && pacman -S --noconfirm base base-devel texlive-most
+# install all latex packages
+RUN apt-get update && apt-get install -y \
+    texlive-full
 
 # Entrypoint
 ## Copy entrypoint
